@@ -17,6 +17,37 @@
   </head>
   <body>
     <div class="weatherapp-wrap">
+      
+      <main>
+    <section class="DayandTime">
+
+        <div class="currentday">Tuesday</div>
+        <div class="clock-time"> 12:45 </div>
+        <div class="clock-ampm"> PM </div>
+    </section>
+    <section class="location">
+              <h1 id="city"></h1>
+    </section>
+ 
+        <div class="temp-current ">
+          <span id="temperature"></a>
+            </span>
+          <span class="units">
+              <a href="#" id="celsius-link">°C</a> 
+            </span>
+        </div>
+             <div class="clearfix-weather-temperature">
+                <img src="" alt="Clear" id="icon" class="float-left" />
+              </div>
+    <ul>
+      <div class="description">   
+       <li><span id=description></span>  </li>
+         <li>Wind | <span id="wind"></span> m/h</li>  
+          <li>Humidity | <span id="humidity"></span>%</li>
+          <li> Feels like | <span id="real-feel"> </span> °C </li>
+     </ul>
+</main>
+      
        <script src="src/app.js"></script>
   </footer>
   </body>
