@@ -71,7 +71,9 @@ li {
   align-items: center;
   font-size: 20px;
   font-weight: 300;
-}
+  display: inline;
+  padding: 40px;
+
 .overview {
   text-align: center;
   font-size: 5px;
