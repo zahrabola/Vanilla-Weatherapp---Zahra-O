@@ -78,4 +78,10 @@ li {
   text-align: center;
   font-size: 5px;
 }
+img {
+  margin: 40px;
+}
+.icon {
+  width: 400px;
+}
 
