@@ -92,11 +92,13 @@ img {
 
 .overview {
   text-align: center;
+  opacity: 0.5;
   color: whitesmoke;
-  font-size: 5px;
+  font-size: 3px;
 }
 footer {
   text-align: center;
+  margin: 60px;
 }
 
 .weather-forecast-date {
