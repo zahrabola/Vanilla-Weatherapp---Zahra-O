@@ -1,5 +1,4 @@
 //-----------------------
-
 function formatTime(currentTime) {
   let currentHours = currentTime.getHours();
   if (currentHours < 10) {
@@ -105,12 +104,13 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  let apiKey = "709cee6d37b86718550c6b0917bcc237";
+  let apiKey = "a007f377631f64e3ca30e980828384a8";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
-///--------------------------------------
+///-------------------------------------
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
