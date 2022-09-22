@@ -1,6 +1,18 @@
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
 //-----------------------
-function formatTime(currentTime) {
+function formatTime() {
+  const currentTime = new Date();
   let currentHours = currentTime.getHours();
+
   if (currentHours < 10) {
     currentHours = `0${currentHours}`;
   }
@@ -9,67 +21,42 @@ function formatTime(currentTime) {
     currentMinutes = `0${currentMinutes}`;
   }
 
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let currentDay = days[currentTime.getDay()];
+  const currentDay = days[currentTime.getDay()];
 
   return `${currentDay}, ${currentHours}:${currentMinutes}`;
 }
 
-let formattedDate = document.querySelector(".DayandTime");
-formattedDate.innerHTML = formatTime(new Date());
+const dayAndTimeElement = document.querySelector("#day-and-time");
+dayAndTimeElement.innerHTML = formatTime();
 
 //------------------
 function formatDate(timestamp) {
-  let date = new Date(timestamp);
+  const date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
+
   let minutes = date.getMinutes();
+
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
 
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
 
 function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const date = new Date(timestamp * 1000);
+  const day = date.getDay();
 
   return days[day];
 }
 function displayForecast(response) {
-  let forecast = response.data.daily;
+  const forecast = response.data.daily;
 
-  let forecastElement = document.querySelector("#forecast");
+  const forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
@@ -112,14 +99,14 @@ function getForecast(coordinates) {
 ///-------------------------------------
 
 function displayTemperature(response) {
-  let temperatureElement = document.querySelector("#temperature");
-  let cityElement = document.querySelector("#city");
-  let descriptionElement = document.querySelector("#description");
-  let humidityElement = document.querySelector("#humidity");
-  let windElement = document.querySelector("#wind");
-  let realFeelElement = document.querySelector("#real-feel");
-  let dateElement = document.querySelector("#date");
-  let iconElement = document.querySelector("#icon");
+  const temperatureElement = document.querySelector("#temperature");
+  const cityElement = document.querySelector("#city");
+  const descriptionElement = document.querySelector("#description");
+  const humidityElement = document.querySelector("#humidity");
+  const windElement = document.querySelector("#wind");
+  const realFeelElement = document.querySelector("#real-feel");
+  const dateElement = document.querySelector("#date");
+  const iconElement = document.querySelector("#icon");
 
   celsiusTemperature = response.data.main.temp;
 
@@ -132,7 +119,7 @@ function displayTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
@@ -140,18 +127,19 @@ function displayTemperature(response) {
 }
 
 function search(city) {
-  let apiKey = "a007f377631f64e3ca30e980828384a8";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  const apiKey = "a007f377631f64e3ca30e980828384a8";
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
   axios.get(apiUrl).then(displayTemperature);
 }
 
 function handleSubmit(event) {
   event.preventDefault();
-  let cityInputElement = document.querySelector("#city-input");
+  const cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
 }
 
-let form = document.querySelector("#search-form");
+const form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 search("London");
