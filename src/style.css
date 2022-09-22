@@ -5,6 +5,7 @@
 }
 body {
   background-image: url(../images/12am\ -\ 6am.jpg);
+  background-attachment: fixed;
   background-size: cover;
   background-position: top center;
    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -40,7 +41,7 @@ main {
   text-align: center;
 }
 
-.DayandTime {
+#day-and-time {
   font-size: 40px;
   margin-bottom: 40px;
   color: whitesmoke;
